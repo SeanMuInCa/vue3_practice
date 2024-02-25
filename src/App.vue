@@ -1,20 +1,19 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import { ref } from 'vue';
+
+console.log("test");
+let count = ref(0);
+const increase = () => {
+  console.log(count);
+
+  count.value++;
+}
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+  <h1>hello</h1>
+  <h1>{{ count }}</h1>
+  <button @click="increase">click</button>
 </template>
 
 <style scoped>
