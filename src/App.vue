@@ -3,17 +3,24 @@ import { ref } from 'vue';
 
 console.log("test");
 let count = ref(0);
-const increase = () => {
-  console.log(count);
-
-  count.value++;
+function useCount() {
+  
+  const increase = () => {
+    console.log(count.value);
+    
+    count.value++;
+    console.log(count.value);
+  }
+  return{
+    count,increase
+  }
 }
 </script>
 
 <template>
   <h1>hello</h1>
-  <h1>{{ count }}</h1>
-  <button @click="increase">click</button>
+  <h1>{{ useCount().count }}</h1>
+  <button @click="useCount().increase()">click</button>
 </template>
 
 <style scoped>
