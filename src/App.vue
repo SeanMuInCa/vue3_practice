@@ -1,8 +1,5 @@
-<script setup lang="ts">
-
-</script>
-
 <template>
+  <h1>{{ todos.length }}</h1>
   <div id="app">
     <section class="todoapp">
         <header class="header">
@@ -56,6 +53,17 @@
     </section>
 </div>
 </template>
+
+
+<script setup lang="ts">
+  import {ref} from 'vue';
+  import * as todoStorage from './util/todoStorage';
+
+  const todos = ref(todoStorage.fetch());
+  console.log(todos);
+  
+</script>
+
 
 <style scoped>
 </style>
