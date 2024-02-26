@@ -15,3 +15,7 @@ export function save(todos)
 {
     localStorage.setItem('Todoist',JSON.stringify(todos));
 }
+
+export function generateId(){
+    return Date.now() + Math.random().toString(16).substring(2,4);
+}

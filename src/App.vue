@@ -1,10 +1,16 @@
 <template>
   <h1>{{ list.todos.value.length }}</h1>
+  <h1>{{ todo.newTodoTitle }}</h1>
   <div id="app">
     <section class="todoapp">
         <header class="header">
             <h1>todos</h1>
-            <input class="new-todo" autofocus="false" autocomplete="off" placeholder="What needs to be done?" />
+            <input class="new-todo" 
+            autofocus="false" 
+            autocomplete="off" 
+            placeholder="What needs to be done?" 
+            v-model="todo.newTodoTitle.value"
+            @keyup.enter="todo.addTodo"/>
         </header>
         <section class="main">
             <input id="toggle-all" class="toggle-all" type="checkbox" />
@@ -57,9 +63,12 @@
 
 <script setup lang="ts">
   
-  import useTodoList from '@/composition/useTodoList'
-  
+  import useTodoList from '@/composition/useTodoList';
+  import useNewTodo from '@/composition/useNewTodo';
+
   const list = useTodoList();
+
+  const todo = useNewTodo();
 
   
 </script>
