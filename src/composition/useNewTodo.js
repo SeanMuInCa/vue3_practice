@@ -1,6 +1,6 @@
 import {ref } from 'vue'
 import { generateId } from '../util/todoStorage';
-export default function useNewTodo(){
+export default function useNewTodo(todos){
     const newTodoTitle = ref("");//新任务的标题
 
     const addTodo = () => {//新增任务
@@ -14,7 +14,8 @@ export default function useNewTodo(){
             isDone: false,
             
         }
-        console.log(todo);
+        todos.value.push(todo);
+        newTodoTitle.value = "";
     }
 
     return {

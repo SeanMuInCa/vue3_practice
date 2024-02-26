@@ -1,6 +1,6 @@
 <template>
   <h1>{{ list.todos.value.length }}</h1>
-  <h1>{{ todo.newTodoTitle }}</h1>
+
   <div id="app">
     <section class="todoapp">
         <header class="header">
@@ -66,9 +66,10 @@
   import useTodoList from '@/composition/useTodoList';
   import useNewTodo from '@/composition/useNewTodo';
 
-  const list = useTodoList();
 
-  const todo = useNewTodo();
+  const list = useTodoList();
+  
+  const todo = useNewTodo(list.todos);
 
   
 </script>
