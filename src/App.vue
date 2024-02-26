@@ -1,5 +1,5 @@
 <template>
-  <h1>{{ todos.length }}</h1>
+  <h1>{{ list.todos.value.length }}</h1>
   <div id="app">
     <section class="todoapp">
         <header class="header">
@@ -56,11 +56,11 @@
 
 
 <script setup lang="ts">
-  import {ref} from 'vue';
-  import * as todoStorage from './util/todoStorage';
+  
+  import useTodoList from '@/composition/useTodoList'
+  
+  const list = useTodoList();
 
-  const todos = ref(todoStorage.fetch());
-  console.log(todos);
   
 </script>
 
