@@ -30,9 +30,13 @@ export default function useFilter(todos){
     const unfinished = computed(() => {
         return count(todos.value);
     })
+    //已完成的条目
+    const finished = computed(() => {
+        return filter(todos.value,'completed').length;
+    })
 
     //外面需要用到的东西要返回
     return {
-        filterKeyRef,filtedData,unfinished
+        filterKeyRef,filtedData,unfinished,finished
     }
 }
