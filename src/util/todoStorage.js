@@ -24,7 +24,8 @@ export function filter(todos, filterKey = 'all'){
     if(filterKey === 'all') return todos;
     else if(filterKey === 'active'){
         return todos.filter(item => item.isDone === false);
-    }else{
+    }else if(filterKey === 'completed'){
         return todos.filter(item => item.isDone === true);
     }
+    throw new Error("invalid input");
 }

@@ -16,26 +16,10 @@
             <input id="toggle-all" class="toggle-all" type="checkbox" />
             <label for="toggle-all">Mark all as complete</label>
             <ul class="todo-list">
-                <li class="todo">
+                <li class="todo" v-for="todo in filter.filtedData.value" :key="todo.id">
                     <div class="view">
                         <input class="toggle" type="checkbox" />
-                        <label>学习composition api</label>
-                        <button class="destroy"></button>
-                    </div>
-                    <input class="edit" type="text" />
-                </li>
-                <li class="todo">
-                    <div class="view">
-                        <input class="toggle" type="checkbox" />
-                        <label>投递50封简历</label>
-                        <button class="destroy"></button>
-                    </div>
-                    <input class="edit" type="text" />
-                </li>
-                <li class="todo">
-                    <div class="view">
-                        <input class="toggle" type="checkbox" />
-                        <label>上午10:30 参加面试</label>
+                        <label>{{ todo.title }}</label>
                         <button class="destroy"></button>
                     </div>
                     <input class="edit" type="text" />

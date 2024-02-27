@@ -1,4 +1,4 @@
-import {ref, onMounted, onUnmounted} from 'vue';
+import {ref, onMounted, onUnmounted, computed} from 'vue';
 import {filter} from '../util/todoStorage';
 
 export default function useFilter(todos){
@@ -23,8 +23,12 @@ export default function useFilter(todos){
         window.removeEventListener('hashchange', onHashChange);
     });
     
+    const filtedData = computed(() => {
+        return filter(todos.value, filterKeyRef.value);
+    })
+    console.log(filtedData);
     //外面需要用到的东西要返回
     return {
-        filterKeyRef,
+        filterKeyRef,filtedData
     }
 }
