@@ -34,7 +34,7 @@
                 <li><a href="#/active" :class="{ selected: filter.filterKeyRef === 'active'}">Active</a></li>
                 <li><a href="#/completed" :class="{ selected: filter.filterKeyRef === 'completed'}">Completed</a></li>
             </ul>
-            <button class="clear-completed" :style="{display: filter.finished.value === 0 ? 'none' : 'block'}">
+            <button class="clear-completed" v-show="filter.finished.value > 0">
                 Clear completed
             </button>
         </footer>
