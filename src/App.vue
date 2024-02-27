@@ -18,7 +18,7 @@
             <ul class="todo-list">
                 <li class="todo" v-for="todo in filter.filtedData.value" :key="todo.id">
                     <div class="view">
-                        <input class="toggle" type="checkbox" />
+                        <input class="toggle" type="checkbox" v-model="todo.isDone"/>
                         <label>{{ todo.title }}</label>
                         <button class="destroy"></button>
                     </div>
