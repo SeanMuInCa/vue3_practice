@@ -19,3 +19,12 @@ export function save(todos)
 export function generateId(){
     return Date.now() + Math.random().toString(16).substring(2,4);
 }
+
+export function filter(todos, filterKey = 'all'){
+    if(filterKey === 'all') return todos;
+    else if(filterKey === 'active'){
+        return todos.filter(item => item.isDone === false);
+    }else{
+        return todos.filter(item => item.isDone === true);
+    }
+}

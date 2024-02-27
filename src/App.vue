@@ -1,5 +1,5 @@
 <template>
-  <h1>{{ list.todos.value.length }}</h1>
+  <h1>{{ filter.filterKeyRef }}</h1>
 
   <div id="app">
     <section class="todoapp">
@@ -48,9 +48,9 @@
                 <span>items left</span>
             </span>
             <ul class="filters">
-                <li><a href="#/all" class="selected">All</a></li>
-                <li><a href="#/active" class="">Active</a></li>
-                <li><a href="#/completed" class="">Completed</a></li>
+                <li><a href="#/all" :class="{ selected: filter.filterKeyRef === 'all'}">All</a></li>
+                <li><a href="#/active" :class="{ selected: filter.filterKeyRef === 'active'}">Active</a></li>
+                <li><a href="#/completed" :class="{ selected: filter.filterKeyRef === 'completed'}">Completed</a></li>
             </ul>
             <button class="clear-completed" style="display: none">
                 Clear completed
@@ -62,14 +62,15 @@
 
 
 <script setup lang="ts">
-  
+  import useFileter from '@/composition/useFileter'
   import useTodoList from '@/composition/useTodoList';
   import useNewTodo from '@/composition/useNewTodo';
-
 
   const list = useTodoList();
   
   const todo = useNewTodo(list.todos);
+
+  const filter = useFileter(list.todos);
 
   
 </script>
