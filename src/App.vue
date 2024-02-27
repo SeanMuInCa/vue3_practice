@@ -22,7 +22,7 @@
                     </div>
                     <input class="edit" type="text" />
                 </li>
-            </ul>
+            </ul> 
         </section>
         <footer class="footer">
             <span class="todo-count">
