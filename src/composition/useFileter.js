@@ -1,5 +1,5 @@
 import {ref, onMounted, onUnmounted, computed} from 'vue';
-import {filter} from '../util/todoStorage';
+import {filter,count} from '../util/todoStorage';
 
 export default function useFilter(todos){
     const validHash = ['all', 'completed', 'active'];
@@ -21,12 +21,18 @@ export default function useFilter(todos){
     onUnmounted(() => {
         window.removeEventListener('hashchange', onHashChange);
     });
-    
+    //筛选后的数组
     const filtedData = computed(() => {
         return filter(todos.value, filterKeyRef.value);
     })
+
+    //未完成的条目
+    const unfinished = computed(() => {
+        return count(todos.value);
+    })
+
     //外面需要用到的东西要返回
     return {
-        filterKeyRef,filtedData
+        filterKeyRef,filtedData,unfinished
     }
 }

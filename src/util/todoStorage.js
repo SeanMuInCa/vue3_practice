@@ -29,3 +29,7 @@ export function filter(todos, filterKey = 'all'){
     }
     throw new Error("invalid input");
 }
+
+export function count(todos){
+    return todos.filter(item => item.isDone === false).length;
+}

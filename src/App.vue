@@ -1,5 +1,5 @@
 <template>
-  <h1>{{ filter.filterKeyRef }}</h1>
+  <h1>{{ filter.unfinished }}</h1>
 
   <div id="app">
     <section class="todoapp">
@@ -16,7 +16,7 @@
             <input id="toggle-all" class="toggle-all" type="checkbox" />
             <label for="toggle-all">Mark all as complete</label>
             <ul class="todo-list">
-                <li class="todo" v-for="todo in filter.filtedData.value" :key="todo.id">
+                <li class="todo" :class="{completed: todo.isDone}" v-for="todo in filter.filtedData.value" :key="todo.id">
                     <div class="view">
                         <input class="toggle" type="checkbox" v-model="todo.isDone"/>
                         <label>{{ todo.title }}</label>
@@ -28,7 +28,7 @@
         </section>
         <footer class="footer">
             <span class="todo-count">
-                <strong>3</strong>
+                <strong>{{ filter.unfinished }}</strong>
                 <span>items left</span>
             </span>
             <ul class="filters">
