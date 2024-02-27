@@ -13,7 +13,7 @@ export function fetch(){
  */
 export function save(todos)
 {
-    localStorage.setItem('Todoist',JSON.stringify(todos));
+    if(!todos) localStorage.setItem('Todoist',JSON.stringify(todos));
 }
 
 export function generateId(){
