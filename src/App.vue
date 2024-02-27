@@ -1,6 +1,4 @@
 <template>
-  <h1>{{ filter.unfinished }}</h1>
-
   <div id="app">
     <section class="todoapp">
         <header class="header">
@@ -29,7 +27,7 @@
         <footer class="footer">
             <span class="todo-count">
                 <strong>{{ filter.unfinished }}</strong>
-                <span>items left</span>
+                <span>{{ (filter.unfinished.value) === 1 ? 'item left' : 'items left' }}</span>
             </span>
             <ul class="filters">
                 <li><a href="#/all" :class="{ selected: filter.filterKeyRef === 'all'}">All</a></li>
