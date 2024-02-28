@@ -1,4 +1,4 @@
-import {computed, ref} from 'vue';
+import {ref} from 'vue';
 
 export default function useEditTodo(todos){
     const editingTodoRef = ref(null);//当前正在修改的todo
@@ -16,19 +16,16 @@ export default function useEditTodo(todos){
         editingTodoRef.value = null;
         todo.title = oldTitle;
     }
-    const allDone = computed({
-        get(){
-            return todos.value.filter(item => !item.isDone ).length === 0;
-        },
-        set(val){
-            todos.value.forEach(item => item.isDone = val);
-        }
-    })
-    // const checkStatus = () => {
+    const checkAll = (status) => {
+        todos.value.forEach(item => {
+            item.isDone = status;
+        });
+    }
+    const checkStatus = () => {
         
-    //     return todos.value.filter(item => item.isDone).length;
-    // }
+        return todos.value.filter(item => item.isDone).length;
+    }
     return {
-        editingTodoRef,editTodo,modified,cancelEdit,allDone
+        editingTodoRef,editTodo,modified,cancelEdit,checkAll,checkStatus
     }
 }

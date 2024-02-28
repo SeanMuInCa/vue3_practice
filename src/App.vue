@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <h1>{{ editTodo.allDone }}</h1>
+    <h1>{{  editTodo.checkStatus() }}</h1>
+    <input type="checkbox">
     <section class="todoapp">
         <header class="header">
             <h1>todos</h1>
@@ -12,7 +13,7 @@
             @keyup.enter="todo.addTodo"/>
         </header>
         <section class="main">
-            <input id="toggle-all" class="toggle-all" type="checkbox" :checked="editTodo.allDone"/>
+            <input id="toggle-all" class="toggle-all" type="checkbox" @change="editTodo.checkAll($event.target.checked)" :checked="editTodo.checkStatus()"/>
             <label for="toggle-all">Mark all as complete</label>
             <ul class="todo-list">
                 <li class="todo" :class="{completed: todo.isDone, editing: editTodo.editingTodoRef.value === todo}" v-for="todo in filter.filtedData.value" :key="todo.id">
