@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <h1>{{  typeof editTodo.editTodo }}</h1>
     <section class="todoapp">
         <header class="header">
             <h1>todos</h1>
@@ -14,13 +15,15 @@
             <input id="toggle-all" class="toggle-all" type="checkbox" />
             <label for="toggle-all">Mark all as complete</label>
             <ul class="todo-list">
-                <li class="todo" :class="{completed: todo.isDone}" v-for="todo in filter.filtedData.value" :key="todo.id">
+                <li class="todo" :class="{completed: todo.isDone, editing: editTodo.editingTodoRef.value === todo}" v-for="todo in filter.filtedData.value" :key="todo.id">
                     <div class="view">
                         <input class="toggle" type="checkbox" v-model="todo.isDone"/>
-                        <label>{{ todo.title }}</label>
+                        <label @dblclick="editTodo.editTodo(todo)">{{ todo.title }}</label>
                         <button class="destroy"></button>
                     </div>
-                    <input class="edit" type="text" />
+                    <input class="edit" type="text" v-model="todo.title"  
+                    @blur="editTodo.modified" @keypress.enter="editTodo.modified" 
+                    @keyup.escape="editTodo.cancelEdit(todo)"/>
                 </li>
             </ul> 
         </section>
@@ -44,9 +47,10 @@
 
 
 <script setup lang="ts">
-  import useFileter from '@/composition/useFileter'
+  import useFileter from '@/composition/useFileter';
   import useTodoList from '@/composition/useTodoList';
   import useNewTodo from '@/composition/useNewTodo';
+  import useEditTodo from '@/composition/useEditTodo';
 
   const list = useTodoList();
   
@@ -54,7 +58,9 @@
 
   const filter = useFileter(list.todos);
 
+  const editTodo = useEditTodo(list.todos);
   
+
 </script>
 
 
