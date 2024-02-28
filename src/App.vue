@@ -19,7 +19,7 @@
                     <div class="view">
                         <input class="toggle" type="checkbox" v-model="todo.isDone"/>
                         <label @dblclick="editTodo.editTodo(todo)">{{ todo.title }}</label>
-                        <button class="destroy"></button>
+                        <button class="destroy" @click="deleteTodo.deleteOne(todo)"></button>
                     </div>
                     <input class="edit" type="text" v-model="todo.title"  
                     @blur="editTodo.modified(todo)" 
@@ -38,7 +38,7 @@
                 <li><a href="#/active" :class="{ selected: filter.filterKeyRef === 'active'}">Active</a></li>
                 <li><a href="#/completed" :class="{ selected: filter.filterKeyRef === 'completed'}">Completed</a></li>
             </ul>
-            <button class="clear-completed" v-show="filter.finished.value > 0">
+            <button class="clear-completed" v-show="filter.finished.value > 0" @click="deleteTodo.deleteAll">
                 Clear completed
             </button>
         </footer>
@@ -52,6 +52,7 @@
   import useTodoList from '@/composition/useTodoList';
   import useNewTodo from '@/composition/useNewTodo';
   import useEditTodo from '@/composition/useEditTodo';
+  import useDeleteTodo from '@/composition/useDeleteTodo';
 
   const list = useTodoList();
   
@@ -61,6 +62,7 @@
 
   const editTodo = useEditTodo(list.todos);
   
+  const deleteTodo = useDeleteTodo(list.todos);
 
 </script>
 
