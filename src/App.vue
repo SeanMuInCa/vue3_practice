@@ -11,7 +11,7 @@
             v-model="todo.newTodoTitle.value"
             @keyup.enter="todo.addTodo"/>
         </header>
-        <section class="main">
+        <section class="main" v-show="list.todos.value.length">
             <input id="toggle-all" class="toggle-all" type="checkbox" @change="editTodo.checkAll($event.target.checked)" :checked="editTodo.checkStatus()"/>
             <label for="toggle-all">Mark all as complete</label>
             <ul class="todo-list">
@@ -28,7 +28,7 @@
                 </li>
             </ul> 
         </section>
-        <footer class="footer">
+        <footer class="footer" v-show="list.todos.value.length">
             <span class="todo-count">
                 <strong>{{ filter.unfinished }}</strong>
                 <span>{{ (filter.unfinished.value) === 1 ? 'item left' : 'items left' }}</span>
