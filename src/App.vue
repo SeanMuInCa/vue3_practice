@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <h1>{{  editTodo.checkStatus() }}</h1>
-    <input type="checkbox">
     <section class="todoapp">
         <header class="header">
             <h1>todos</h1>
@@ -23,7 +22,8 @@
                         <button class="destroy"></button>
                     </div>
                     <input class="edit" type="text" v-model="todo.title"  
-                    @blur="editTodo.modified" @keypress.enter="editTodo.modified" 
+                    @blur="editTodo.modified(todo)" 
+                    @keypress.enter="editTodo.modified(todo)" 
                     @keyup.escape="editTodo.cancelEdit(todo)"/>
                 </li>
             </ul> 

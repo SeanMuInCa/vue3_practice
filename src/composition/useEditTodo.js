@@ -8,8 +8,15 @@ export default function useEditTodo(todos){
         editingTodoRef.value = todo;
     }
 
-    const modified = () => {
+    const modified = (todo) => {
         editingTodoRef.value = null;
+        const title = todo.title.trim();
+        if(title){
+            todo.title = title;
+        }else{
+            let a  = todos.value.indexOf(todo);
+            todos.value.splice(a,1);
+        }
     }
 
     const cancelEdit = (todo) => {
