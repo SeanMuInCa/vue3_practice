@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h1>{{  typeof editTodo.editTodo }}</h1>
+    <h1>{{ editTodo.allDone }}</h1>
     <section class="todoapp">
         <header class="header">
             <h1>todos</h1>
@@ -12,7 +12,7 @@
             @keyup.enter="todo.addTodo"/>
         </header>
         <section class="main">
-            <input id="toggle-all" class="toggle-all" type="checkbox" />
+            <input id="toggle-all" class="toggle-all" type="checkbox" :checked="editTodo.allDone"/>
             <label for="toggle-all">Mark all as complete</label>
             <ul class="todo-list">
                 <li class="todo" :class="{completed: todo.isDone, editing: editTodo.editingTodoRef.value === todo}" v-for="todo in filter.filtedData.value" :key="todo.id">
