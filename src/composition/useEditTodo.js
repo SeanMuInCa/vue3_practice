@@ -30,7 +30,7 @@ export default function useEditTodo(todos){
     }
     const checkStatus = () => {
         
-        return todos.value.filter(item => item.isDone).length;
+        return todos.value.filter(item => item.isDone).length === todos.value.length;
     }
     return {
         editingTodoRef,editTodo,modified,cancelEdit,checkAll,checkStatus
